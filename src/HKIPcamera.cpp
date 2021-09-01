@@ -303,13 +303,10 @@ Mat get_one_frame(){
     pthread_mutex_unlock(&g_cs_frameList);
     pthread_mutex_lock(&g_cs_frameList);
   }
-  list<Mat>::iterator it;
-  it = g_frameList.end();
-  it--;
-  Mat dbgframe = (*(it));
-  (*g_frameList.begin()).copyTo(frame1);
-  frame1 = dbgframe;
-  g_frameList.pop_front();
+ 
+  //frame1 = g_frameList.front();
+  frame1 = g_frameList.back();
+
   //imshow("camera", frame1);
   //waitKey(1);
 
